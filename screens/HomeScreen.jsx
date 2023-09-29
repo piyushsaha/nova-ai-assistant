@@ -53,6 +53,7 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   homeScreenContainer: {
     flex: 1,
+    marginHorizontal: 20,
   },
   botLogo: {
     width: 0.15 * height,

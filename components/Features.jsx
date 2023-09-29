@@ -62,7 +62,6 @@ export default Features;
 
 const styles = StyleSheet.create({
   featuresContainer: {
-    marginHorizontal: 20,
     marginTop: 10,
   },
   titleText: {

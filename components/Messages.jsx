@@ -17,7 +17,6 @@ const Messages = ({ messages }) => {
         height: 0.65 * height,
         backgroundColor: 'rgb(229 229 229)',
         marginVertical: 30,
-        marginHorizontal: 20,
         borderRadius: 20,
         padding: 2,
       }}
