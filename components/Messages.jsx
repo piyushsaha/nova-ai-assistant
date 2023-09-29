@@ -18,6 +18,7 @@ const Messages = ({ messages }) => {
         marginVertical: 30,
         borderRadius: 20,
         padding: 2,
+        flex: 1,
       }}
     >
       <ScrollView showsVerticalScrollIndicator={false}>
