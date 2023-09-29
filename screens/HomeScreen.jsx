@@ -3,38 +3,24 @@ import { Dimensions, Image, StyleSheet, View } from 'react-native';
 
 import Features from '../components/Features';
 import Messages from '../components/Messages';
+import InputToolbar from '../components/InputToolbar';
 
 const { height } = Dimensions.get('window');
-const dummyMessages = [
-  {
-    role: 'user',
-    content: 'How are you?',
-  },
-  {
-    role: 'assistant',
-    content: "I'm fine, How may i help you today.",
-  },
-  {
-    role: 'user',
-    content: 'How are you?',
-  },
-  {
-    role: 'assistant',
-    content: "I'm fine, How may i help you today.",
-  },
-  {
-    role: 'user',
-    content: 'create an image of a dog playing with cat',
-  },
-  {
-    role: 'assistant',
-    content:
-      'https://storage.googleapis.com/pai-images/ae74b3002bfe4b538493ca7aedb6a300.jpeg',
-  },
-];
 
 const HomeScreen = () => {
-  const [messages, setMessages] = useState(dummyMessages);
+  const [messages, setMessages] = useState([]);
+
+  const handleClearMessages = () => {
+    setMessages([]);
+  };
+
+  const addMessage = (role, content) => {
+    setMessages((messages) => {
+      const newMessages = [...messages, { role, content }];
+      return newMessages;
+    });
+  };
+
   return (
     <View style={styles.homeScreenContainer}>
       <View style={{ alignItems: 'center' }}>
@@ -43,7 +29,19 @@ const HomeScreen = () => {
           style={styles.botLogo}
         />
       </View>
-      {messages.length === 0 ? <Features /> : <Messages messages={messages} />}
+      <View style={{ height: 0.7 * height }}>
+        {messages.length === 0 ? (
+          <Features />
+        ) : (
+          <Messages messages={messages} />
+        )}
+      </View>
+
+      <InputToolbar
+        messages={messages}
+        handleClearMessages={handleClearMessages}
+        addMessage={addMessage}
+      />
     </View>
   );
 };
