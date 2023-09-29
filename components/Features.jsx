@@ -90,5 +90,6 @@ const styles = StyleSheet.create({
   },
   featureDescription: {
     color: 'rgb(55 , 65, 81)',
+    marginTop: 5,
   },
 });
