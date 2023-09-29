@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import {
   Dimensions,
   Image,
@@ -10,6 +11,13 @@ import {
 const { width, height } = Dimensions.get('window');
 
 const Messages = ({ messages }) => {
+  const messagesContainerRef = useRef();
+
+  // Scroll to the end (latest messages) whenever the messages change
+  useEffect(() => {
+    messagesContainerRef?.current?.scrollToEnd({ animate: true });
+  }, [messages]);
+
   return (
     // All messages container
     <View
@@ -21,7 +29,10 @@ const Messages = ({ messages }) => {
         flex: 1,
       }}
     >
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        ref={messagesContainerRef}
+      >
         {messages.map((message, index) => {
           return (
             // Message container
