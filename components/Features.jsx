@@ -1,11 +1,4 @@
-import {
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-} from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -28,10 +21,7 @@ const features = [
 
 const Features = () => {
   return (
-    <ScrollView
-      style={{ height: 0.6 * height }}
-      showsVerticalScrollIndicator={false}
-    >
+    <View showsVerticalScrollIndicator={false}>
       <View style={styles.featuresContainer}>
         <Text style={styles.titleText}>Features</Text>
         {features.map((feature) => {
@@ -54,7 +44,7 @@ const Features = () => {
           );
         })}
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

@@ -14,7 +14,6 @@ const Messages = ({ messages }) => {
     // All messages container
     <View
       style={{
-        height: 0.65 * height,
         backgroundColor: 'rgb(229 229 229)',
         marginVertical: 30,
         borderRadius: 20,
