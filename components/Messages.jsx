@@ -21,10 +21,11 @@ const Messages = ({ messages }) => {
       }}
     >
       <ScrollView showsVerticalScrollIndicator={false}>
-        {messages.map((message) => {
+        {messages.map((message, index) => {
           return (
             // Message container
             <View
+              key={index}
               style={{
                 backgroundColor:
                   message.role === 'user' ? 'white' : 'rgb(167 243 208)',
