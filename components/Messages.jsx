@@ -53,7 +53,7 @@ const Messages = ({ messages }) => {
             >
               {/* Display image if the response from assistant is a URL, else the message */}
               {message.role === 'assistant' &&
-              message.content.startsWith('http') ? (
+              message?.content?.startsWith('http') ? (
                 <Image
                   source={{ uri: message.content }}
                   resizeMode='contain'
