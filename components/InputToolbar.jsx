@@ -35,6 +35,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
   }, []);
 
   const speechStartHandler = async () => {
+    setIsRecording(true);
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
@@ -83,7 +84,6 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
   };
 
   const startRecording = async () => {
-    setIsRecording(true);
     try {
       await Voice.start('en-US');
     } catch (e) {
