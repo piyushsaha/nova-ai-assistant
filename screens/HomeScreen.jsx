@@ -25,7 +25,7 @@ const HomeScreen = () => {
     <View style={styles.homeScreenContainer}>
       <View style={{ alignItems: 'center' }}>
         <Image
-          source={require('../assets/images/bot.png')}
+          source={require('../assets/images/bot.jpg')}
           style={styles.botLogo}
         />
       </View>
