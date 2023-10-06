@@ -49,6 +49,10 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
         console.log('Microphone permission granted');
       } else {
         console.log('Microphone permission denied');
+        Alert.alert(
+          'Microphone Access Required',
+          'Please grant access to microphone to record your prompt'
+        );
       }
     } catch (e) {
       console.log(e);
