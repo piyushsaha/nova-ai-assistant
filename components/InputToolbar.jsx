@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Voice from '@react-native-voice/voice';
+import { speak, stop } from 'expo-speech';
 
 import openAI from '../api/openAI';
 
@@ -35,6 +36,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
   }, []);
 
   const speechStartHandler = async () => {
+    stopSpeaking();
     setIsRecording(true);
     try {
       const granted = await PermissionsAndroid.request(
@@ -70,6 +72,15 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
     setRecordedSpeechSTT(userPrompt);
   };
 
+  const speakResults = (textToBeSpoken) => {
+    setIsAssistantSpeaking(true);
+    speak(textToBeSpoken);
+  };
+  const stopSpeaking = () => {
+    setIsAssistantSpeaking(false);
+    stop();
+  };
+
   const fetchResults = async () => {
     try {
       setIsLoading(true);
@@ -80,6 +91,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
       addMessage('user', recordedSpeechSTT);
       const res = await openAI(newMessages, recordedSpeechSTT);
       addMessage('assistant', res);
+      speakResults(res);
       setIsLoading(false);
     } catch (e) {
       Alert.alert('Error Occured', e?.message || 'Some error occured');
@@ -116,6 +128,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
         {isAssistantSpeaking && (
           <TouchableOpacity
             style={{ backgroundColor: 'red', padding: 10, borderRadius: 20 }}
+            onPress={stopSpeaking}
           >
             <Text style={{ color: 'white', textAlign: 'center' }}>Stop</Text>
           </TouchableOpacity>
