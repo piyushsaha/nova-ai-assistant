@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "nebula",
-    "slug": "nebula",
+    "name": "Nova",
+    "slug": "nova",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/images/icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,23 +15,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.piyushsaha.nova"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ],
-      "package": "com.piyushsaha.nebula"
+      "package": "com.piyushsaha.nova"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "@react-native-voice/voice"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "327a4e0c-7d0a-4e36-871c-ca0dae99dfff"
+      }
+    }
   }
 }
