@@ -1,4 +1,4 @@
-package com.piyushsaha.nebula;
+package com.piyushsaha.nova;
 
 import android.app.Application;
 import android.content.res.Configuration;

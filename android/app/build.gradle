@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.piyushsaha.nebula'
+    namespace 'com.piyushsaha.nova'
     defaultConfig {
-        applicationId 'com.piyushsaha.nebula'
+        applicationId 'com.piyushsaha.nova'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
