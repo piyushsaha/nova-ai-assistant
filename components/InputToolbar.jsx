@@ -91,7 +91,9 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
       addMessage('user', recordedSpeechSTT);
       const res = await openAI(newMessages, recordedSpeechSTT);
       addMessage('assistant', res);
-      speakResults(res);
+      if (!res?.startsWith('http')) {
+        speakResults(res);
+      }
       setIsLoading(false);
     } catch (e) {
       Alert.alert('Error Occured', e?.message || 'Some error occured');
