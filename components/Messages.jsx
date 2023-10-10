@@ -20,15 +20,7 @@ const Messages = ({ messages }) => {
 
   return (
     // All messages container
-    <View
-      style={{
-        backgroundColor: 'rgb(229 229 229)',
-        marginVertical: 30,
-        borderRadius: 20,
-        padding: 2,
-        flex: 1,
-      }}
-    >
+    <View style={styles.messagesContainer}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         ref={messagesContainerRef}
@@ -38,18 +30,17 @@ const Messages = ({ messages }) => {
             // Message container
             <View
               key={index}
-              style={{
-                backgroundColor:
-                  message.role === 'user' ? 'white' : 'rgb(167 243 208)',
-                maxWidth: 0.7 * width,
-                alignSelf: message.role === 'user' ? 'flex-end' : 'flex-start',
-                marginVertical: 10,
-                marginHorizontal: 10,
-                borderRadius: 20,
-                borderTopRightRadius: message.role === 'user' ? 0 : 20,
-                borderTopLeftRadius: message.role === 'assistant' ? 0 : 20,
-                padding: 10,
-              }}
+              style={[
+                styles.message,
+                {
+                  backgroundColor:
+                    message.role === 'user' ? 'white' : 'rgb(167 243 208)',
+                  alignSelf:
+                    message.role === 'user' ? 'flex-end' : 'flex-start',
+                  borderTopRightRadius: message.role === 'user' ? 0 : 20,
+                  borderTopLeftRadius: message.role === 'assistant' ? 0 : 20,
+                },
+              ]}
             >
               {/* Display image if the response from assistant is a URL, else the message */}
               {message.role === 'assistant' &&
@@ -57,11 +48,7 @@ const Messages = ({ messages }) => {
                 <Image
                   source={{ uri: message.content }}
                   resizeMode='contain'
-                  style={{
-                    height: 0.6 * width,
-                    width: 0.6 * width,
-                    borderRadius: 10,
-                  }}
+                  style={styles.responseImage}
                 />
               ) : (
                 <Text>{message.content}</Text>
@@ -76,4 +63,24 @@ const Messages = ({ messages }) => {
 
 export default Messages;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  messagesContainer: {
+    backgroundColor: 'rgb(229 229 229)',
+    marginVertical: 30,
+    borderRadius: 20,
+    padding: 2,
+    flex: 1,
+  },
+  responseImage: {
+    height: 0.6 * width,
+    width: 0.6 * width,
+    borderRadius: 10,
+  },
+  message: {
+    maxWidth: 0.7 * width,
+    marginVertical: 10,
+    marginHorizontal: 10,
+    borderRadius: 20,
+    padding: 10,
+  },
+});

@@ -119,29 +119,22 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
   };
 
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-      }}
-    >
-      <View style={{ width: 0.2 * width }}>
+    <View style={styles.toolbarContainer}>
+      {/* Stop speaking button */}
+      <View style={styles.sideActionButtonContainer}>
         {isAssistantSpeaking && (
-          <TouchableOpacity
-            style={{ backgroundColor: 'red', padding: 10, borderRadius: 20 }}
-            onPress={stopSpeaking}
-          >
-            <Text style={{ color: 'white', textAlign: 'center' }}>Stop</Text>
+          <TouchableOpacity style={styles.stopBtn} onPress={stopSpeaking}>
+            <Text style={styles.stopBtnText}>Stop</Text>
           </TouchableOpacity>
         )}
       </View>
 
+      {/* Record prompt button */}
       <View style={{ alignItems: 'center' }}>
         {isLoading ? (
           <Image
             source={require('../assets/images/loading.gif')}
-            style={{ height: 0.1 * height, width: 0.1 * height }}
+            style={styles.speakBtn}
           />
         ) : isRecording ? (
           <TouchableOpacity
@@ -151,7 +144,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
           >
             <Image
               source={require('../assets/images/recording.gif')}
-              style={{ height: 0.1 * height, width: 0.1 * height }}
+              style={styles.speakBtn}
             />
           </TouchableOpacity>
         ) : (
@@ -162,23 +155,20 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
           >
             <Image
               source={require('../assets/images/recordingIcon.png')}
-              style={{ height: 0.1 * height, width: 0.1 * height }}
+              style={styles.speakBtn}
             />
           </TouchableOpacity>
         )}
       </View>
 
-      <View style={{ width: 0.2 * width }}>
+      {/* Clear messages button */}
+      <View style={styles.sideActionButtonContainer}>
         {messages?.length > 0 && (
           <TouchableOpacity
-            style={{
-              backgroundColor: 'grey',
-              padding: 10,
-              borderRadius: 20,
-            }}
+            style={styles.clearMessagesBtn}
             onPress={handleClearMessages}
           >
-            <Text style={{ color: 'white', textAlign: 'center' }}>Clear</Text>
+            <Text style={styles.clearMessageText}>Clear</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -188,4 +178,35 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
 
 export default InputToolbar;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  toolbarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  sideActionButtonContainer: {
+    width: 0.2 * width,
+  },
+  stopBtn: {
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 20,
+  },
+  stopBtnText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+  speakBtn: {
+    height: 0.1 * height,
+    width: 0.1 * height,
+  },
+  clearMessagesBtn: {
+    backgroundColor: 'grey',
+    padding: 10,
+    borderRadius: 20,
+  },
+  clearMessageText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+});

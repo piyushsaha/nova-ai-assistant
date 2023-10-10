@@ -23,13 +23,13 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.homeScreenContainer}>
-      <View style={{ alignItems: 'center' }}>
+      <View style={styles.botLogoContainer}>
         <Image
           source={require('../assets/images/bot.jpg')}
           style={styles.botLogo}
         />
       </View>
-      <View style={{ height: 0.7 * height }}>
+      <View style={styles.mainAreaContainer}>
         {messages.length === 0 ? (
           <Features />
         ) : (
@@ -56,5 +56,11 @@ const styles = StyleSheet.create({
   botLogo: {
     width: 0.15 * height,
     height: 0.15 * height,
+  },
+  botLogoContainer: {
+    alignItems: 'center',
+  },
+  mainAreaContainer: {
+    height: 0.7 * height,
   },
 });
