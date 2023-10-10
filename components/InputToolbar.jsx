@@ -118,6 +118,12 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
     }
   };
 
+  const clearMessagesHandler = () => {
+    stopRecording(false);
+    stopSpeaking();
+    handleClearMessages();
+  };
+
   return (
     <View style={styles.toolbarContainer}>
       {/* Stop speaking button */}
@@ -166,7 +172,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
         {messages?.length > 0 && (
           <TouchableOpacity
             style={styles.clearMessagesBtn}
-            onPress={handleClearMessages}
+            onPress={clearMessagesHandler}
           >
             <Text style={styles.clearMessageText}>Clear</Text>
           </TouchableOpacity>
