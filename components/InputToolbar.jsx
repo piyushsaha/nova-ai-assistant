@@ -119,7 +119,7 @@ const InputToolbar = ({ messages, handleClearMessages, addMessage }) => {
   };
 
   const clearMessagesHandler = () => {
-    stopRecording(false);
+    stopRecording();
     stopSpeaking();
     handleClearMessages();
   };
